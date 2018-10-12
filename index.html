@@ -10,33 +10,58 @@
     <style>
             html, body {
                 position: relative;
-                width: 95%;
+                min-width: 20%;
+                max-width: 95%;
                 margin-left: auto;
                 margin-right: auto;
                 color: rgb(29, 63, 63);
+                background-color: rgb(240, 250, 223);
+            }
+
+            p {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background-color: rgb(69, 95, 212);
+                color: white;
+                font-weight: 600;
+                margin-bottom: 0;
+                margin-left: 0;
+            }
+
+            #main {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                flex: 4 1 8;
             }
 
             img {
-                border: 6px groove lightsteelblue;
-                /* border-style: groove; */
-                padding: 3px;
+                border: 3px solid rgb(111, 173, 255);
+                padding: 1px;
                 border-radius: 7px;
-                height: 300px;
-                width: 300px;
-                /* object-fit: cover; */
-                
+                height: 400px;
+                width: 400px;
+            }
+
+            .dv {
+                padding: 20px;
             }
 
             img:hover {
-                box-shadow: 0px 0px 15px darkblue;
+                box-shadow: 0px 0px 5px darkblue;
             }
-        
+            
+            span {
+                font-weight: 700;
+            }
         
         </style>
 </head>
 
 <body class="container-fluid">
-    <h1>Projeto: prática API</h1>
+    <p>Hello! :)</p>
+    <div id="main"></div>
 </body>
 
 <script>
@@ -52,15 +77,16 @@
     document.addEventListener("DOMContentLoaded", () => {
 
         quartos.forEach(i => {
+
             let div = document.createElement('div');
-            div.setAttribute('class', 'row');
+            div.setAttribute('class', 'dv');
             div.innerHTML =
                 `
-                <img src="${i.photo}" class="img-responsive col-lg-4">
-				<h4>${i.name}</h4>
-				<h4>${i.city}</h4>
+                <img src="${i.photo}" class="img-responsive"><br>
+				<span>${i.name}</span><br>
+				<span>${i.city}</span>
 				`;
-            document.body.appendChild(div);
+            document.getElementById('main').appendChild(div);
         });
     });
 </script>
