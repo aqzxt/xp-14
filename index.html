@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <style>
+            html, body {
+                position: relative;
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+                color: rgb(29, 63, 63);
+            }
+
+            img {
+                border: 6px groove lightsteelblue;
+                /* border-style: groove; */
+                padding: 3px;
+                border-radius: 7px;
+                height: 300px;
+                width: 300px;
+                /* object-fit: cover; */
+                
+            }
+
+            img:hover {
+                box-shadow: 0px 0px 15px darkblue;
+            }
+        
+        
+        </style>
+</head>
+
+<body class="container-fluid">
+    <h1>Projeto: prática API</h1>
+</body>
+
+<script>
+    // const url = 'http://airbnb.douglasmaia.com/api/properties';
+    // const quartos = fetch(url);
+    // const resposta = quartos.then(response => response.json()).then(result => result).catch(err => console.log(err));
+
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://airbnb.douglasmaia.com/api/properties', false);
+    request.send();
+    let quartos = JSON.parse(request.responseText);
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        quartos.forEach(i => {
+            let div = document.createElement('div');
+            div.setAttribute('class', 'row');
+            div.innerHTML =
+                `
+                <img src="${i.photo}" class="img-responsive col-lg-4">
+				<h4>${i.name}</h4>
+				<h4>${i.city}</h4>
+				`;
+            document.body.appendChild(div);
+        });
+    });
+</script>
+</html>
