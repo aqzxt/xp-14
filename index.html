@@ -5,89 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <style>
-            html, body {
-                position: relative;
-                min-width: 20%;
-                max-width: 95%;
-                margin-left: auto;
-                margin-right: auto;
-                color: rgb(29, 63, 63);
-                background-color: rgb(240, 250, 223);
-            }
-
-            p {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                background-color: rgb(69, 95, 212);
-                color: white;
-                font-weight: 600;
-                margin-bottom: 0;
-                margin-left: 0;
-            }
-
-            #main {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: row;
-                flex: 4 1 8;
-            }
-
-            img {
-                border: 3px solid rgb(111, 173, 255);
-                padding: 1px;
-                border-radius: 7px;
-                height: 400px;
-                width: 400px;
-            }
-
-            .dv {
-                padding: 20px;
-            }
-
-            img:hover {
-                box-shadow: 0px 0px 5px darkblue;
-            }
-            
-            span {
-                font-weight: 700;
-            }
-        
-        </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="container-fluid">
+<body>
     <p>Hello! :)</p>
     <div id="main"></div>
+    <script type="text/javascript" src="./js/script.js"></script>
 </body>
-
-<script>
-    // const url = 'http://airbnb.douglasmaia.com/api/properties';
-    // const quartos = fetch(url);
-    // const resposta = quartos.then(response => response.json()).then(result => result).catch(err => console.log(err));
-
-    const request = new XMLHttpRequest();
-    request.open('GET', 'http://airbnb.douglasmaia.com/api/properties', false);
-    request.send();
-    let quartos = JSON.parse(request.responseText);
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-        quartos.forEach(i => {
-
-            let div = document.createElement('div');
-            div.setAttribute('class', 'dv');
-            div.innerHTML =
-                `
-                <img src="${i.photo}" class="img-responsive"><br>
-				<span>${i.name}</span><br>
-				<span>${i.city}</span>
-				`;
-            document.getElementById('main').appendChild(div);
-        });
-    });
-</script>
 </html>
